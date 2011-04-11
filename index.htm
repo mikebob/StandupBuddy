@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Stand Up Countdown</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+	
+	<style>
+	   .yui3-js-enabled .yui3-scrollview-loading {
+			display:none;
+		}
+	</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8"> 
+<link rel="stylesheet" href="paginator.css" type="text/css" charset="utf-8"> 
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/3.2.0/build/yui/yui.js"></script>
+
+<script type="text/javascript">
+	
+	var interval;
+	var minutes = 15;
+	var seconds = 0;
+	var people = new Array("kitty", "kitty", "kitty", "kitty");
+	
+	//var rand = Math.floor(Math.random() * people.length)
+	
+	$(document).ready(function() {
+		init();
+		$("#btnNext").click(function() {
+			people.sort(function() {return 0.5 - Math.random()}) // shuffle names
+			$("#speaker").text(people.shift());
+		});
+		
+	});
+
+	init = function() {
+		countdown("counter");
+		
+		people.sort(function() {return 0.5 - Math.random()}) // shuffle names
+		for(var i in people) {
+			$("#speakerbox ul").append("<li><img src=\"img/" + people[i] + ".jpeg\"></li>"); 
+		}
+	}
+
+    countdown = function(element) {
+        interval = setInterval(function() {
+            var el = document.getElementById(element);
+            
+            if(seconds == -1) {
+                if(minutes == 0) {
+                    clearInterval(interval);
+                    el.innerHTML = '0:00';
+                    alert("TIME'S UP!");
+                    return;
+                } else {
+                    minutes--;
+                    seconds = 59;
+                }
+            }
+            
+            if(minutes > 0) {
+                var minute_text = minutes;
+            } else {
+                var minute_text = '0';
+            }
+
+			if(seconds < 10 && seconds > -1) {
+	            el.innerHTML = minute_text + ':' + "0" + seconds;			
+			} else {
+	            el.innerHTML = minute_text + ':' + seconds;		
+			}
+            
+            seconds--;
+        }, 1000);
+    }
+
+	YUI().use('scrollview', 'scrollview-paginator', function(Y) {
+		var scrollView = new Y.ScrollView({
+			srcNode : '#scrollable',
+			width : 320,
+			flick : {
+				preventDefault:function(e) {
+					// Prevent image drag in gecko (assuming non-touch for this example).
+					return (Y.UA.gecko);
+				},
+				minDistance:10,
+				minVelocity:0.3
+			}
+		});
+		scrollView.plug(Y.Plugin.ScrollViewPaginator, {
+			selector: 'li'
+		});
+		scrollView.render();
+	});
+</script> 
+
+</head>
+
+<body>
+	<h1 id="headerbox">Stand Up Timer</h1>
+	<span id="counter">&nbsp;</span>
+	<div id="speakerbox">
+		<div id="scrollable" class="yui3-scrollview-loading horiz"> 
+			<ul></ul> 
+		<div>
+	</div>
+</body>
+</html>

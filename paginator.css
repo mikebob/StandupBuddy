@@ -1,0 +1,39 @@
+
+#scrollable.horiz {
+    height:auto;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#scrollable.horiz li {
+    border-bottom: 0;
+}
+
+#scrollable.horiz img {
+    border-width:2px;
+    border-style:solid;
+}
+
+#scrollable li {
+    border-bottom: 1px solid #ccc;
+}
+
+#scrollable li div {
+    padding: 8px;
+    font-size: 140%;
+    font-weight: bold;
+}
+
+#scrollable img {
+	width: 300px;
+	margin: 10px;
+    margin-bottom:10px;
+    -webkit-transform: translate3d(0, 0, 0); 
+}
+
+.yui3-scrollview {
+    margin:0 10px 10px 10px;
+    width:400px;
+    /* clear:left;
+    float:left; */
+}
