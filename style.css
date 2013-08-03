@@ -16,13 +16,31 @@ body {
 	background-color: lightblue;
 	font-family: Arial;
 	background-color: tan;
+	font-family: "Arial Black", Gadget, sans-serif;
 }
 
 h1 {
 	font-size: 30pt;
+	float:left;
+	width:100%;
+}
+
+h1, #instruction {
 	color: white;
 	text-shadow: 0px -1px 3px #374683;
+}
 
+#instruction * {
+	float:left;
+}
+
+#instruction img {
+	margin-top: 5px;
+}
+
+#instruction {
+	margin-top: 30px;
+	float: left;
 }
 
 #headerbox {
@@ -32,15 +50,7 @@ h1 {
 	
 }
 
-/*
-#commands {
-	background-color: rgba(0, 0, 0, 0.3);
-	padding: 5px;
-}
-*/
-
 #counter {
-	/* font: 18px/27px 'KomikaAxisRegular', Arial, sans-serif; */
 	font: 40pt 'KomikaAxisRegular', Arial, sans-serif;
 	letter-spacing: 8px;
 	background: orange;
@@ -116,4 +126,13 @@ button, button:visited {
 	position: absolute;
 	bottom: 10px; left: 2%;
 	width: 96%;
+}
+
+#wrap {
+  	width: 235px;
+  	margin: 0 auto;
+}
+
+.yui3-js-enabled .yui3-scrollview-loading {
+	display:none;
 }

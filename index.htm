@@ -5,12 +5,6 @@
 <head>
 	<title>Stand Up Countdown</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
-	
-	<style>
-	   .yui3-js-enabled .yui3-scrollview-loading {
-			display:none;
-		}
-	</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" charset="utf-8"> 
 <link rel="stylesheet" href="paginator.css" type="text/css" charset="utf-8"> 
@@ -23,9 +17,7 @@
 	var interval;
 	var minutes = 15;
 	var seconds = 0;
-	var people = new Array("kitty", "kitty", "kitty", "kitty");
-	
-	//var rand = Math.floor(Math.random() * people.length)
+	var people = new Array("kitty", "smallkitty", "kitty", "smallkitty");
 	
 	$(document).ready(function() {
 		init();
@@ -101,7 +93,15 @@
 
 <body>
 	<h1 id="headerbox">Stand Up Timer</h1>
+	<div id="wrap">
+		<div id="instruction">
+			<img src="img/arrow-left.png" />
+			<h3>Swipe Image</h3>
+			<img src="img/arrow-right.png" />
+		</div>
+	</div>
 	<span id="counter">&nbsp;</span>
+
 	<div id="speakerbox">
 		<div id="scrollable" class="yui3-scrollview-loading horiz"> 
 			<ul></ul> 
